@@ -1,0 +1,7 @@
+{
+  "name": "ChartFlow",
+  "description": "ChartFlow transforms shorthand nursing notes and handwritten bedside observations into structured, professional clinical documentation. Created and used by a nurse.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
