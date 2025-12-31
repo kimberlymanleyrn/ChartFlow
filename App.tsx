@@ -108,7 +108,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-black pb-20">
+    <div className="min-h-screen text-black pb-10">
       <header className="glass border-b border-slate-200 sticky top-0 z-50 no-print">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -145,22 +145,22 @@ const App: React.FC = () => {
           </p>
         </div>
 
-        {/* Verification Protocol Banner - Black text on White background */}
-        <div className="mb-8 no-print flex justify-center">
-          <div className="bg-white border-2 border-slate-200 p-4 rounded-2xl flex flex-col sm:flex-row gap-4 shadow-xl shadow-slate-100 safety-pulse relative overflow-hidden max-w-3xl w-full">
-            <div className="shrink-0 text-emerald-600 bg-emerald-50 p-2 rounded-lg h-fit border border-emerald-100 shadow-sm w-fit">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        {/* Verification Protocol Banner - Symbol beside text */}
+        <div className="mb-10 no-print flex justify-center">
+          <div className="bg-white border-2 border-slate-200 py-2.5 px-5 rounded-xl flex items-center gap-3.5 shadow-md max-w-2xl w-full">
+            <div className="shrink-0 text-emerald-600 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <div className="relative z-10 flex-grow">
-              <h3 className="text-[10px] font-black text-black uppercase tracking-[0.2em] mb-0.5">Verification Protocol</h3>
-              <p className="text-[12px] text-black leading-snug font-bold">
-                AI assists transcription but DOES NOT replace clinical judgment. <span className="underline decoration-emerald-500 decoration-2">Do not enter Protected Health Information.</span>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">Verification Protocol</span>
+              <p className="text-[11px] text-black font-bold leading-tight">
+                AI transcription does not replace judgment. Do not enter Protected Health Information.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Format Preference Selection - Moved Above Grid */}
+        {/* Format Preference Selection */}
         <div className="mb-10 no-print flex flex-col items-center gap-4">
           <label className="block text-[10px] font-black text-black uppercase tracking-[0.2em]">Format Preference</label>
           <div className="flex flex-wrap justify-center gap-2">
@@ -184,7 +184,6 @@ const App: React.FC = () => {
           {/* Documentation Input Section */}
           <div className="no-print flex flex-col">
             <div className="bg-white rounded-[2rem] shadow-2xl shadow-slate-300/40 border border-slate-100 overflow-hidden relative group flex flex-col h-full border-b-[12px] border-b-black">
-              {/* Header Styled like Output - White text on Black background */}
               <div className="px-8 py-6 bg-black flex items-center justify-between min-h-[96px]">
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-teal-500 shadow-lg shadow-teal-500/50"></div>
@@ -219,7 +218,7 @@ const App: React.FC = () => {
                     <div className="relative flex-grow min-h-[450px]">
                       <textarea
                         className="w-full h-full p-8 rounded-[2rem] border-2 border-slate-200 focus:ring-8 focus:ring-teal-500/5 focus:border-teal-500/50 resize-none bg-white placeholder:text-slate-400 text-[16px] leading-relaxed transition-all font-semibold shadow-inner text-black"
-                        placeholder="Type rough notes here... (DO NOT enter Protected Health Information). e.g., Pt found in bed, alert, lungs clear, HR 82. Denies pain."
+                        placeholder="Type rough notes here... e.g., Pt found in bed, alert, lungs clear, HR 82. Denies pain."
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
                       />
@@ -358,24 +357,28 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Footer - White text on Black background */}
-      <footer className="max-w-5xl mx-auto px-6 mt-16 no-print">
-        <div className="bg-black rounded-[2rem] p-8 text-white space-y-6 shadow-2xl border border-slate-800">
-           <div className="text-center space-y-2">
-            <h4 className="text-xl font-black tracking-tighter text-white">ChartFlow Pro</h4>
-            <p className="text-teal-400 font-bold uppercase tracking-[0.4em] text-[8px]">Clinical Integrity Assured</p>
-           </div>
-
-           <div className="text-white text-[13px] max-w-4xl mx-auto font-medium leading-relaxed text-center border-t border-slate-800 pt-6 space-y-4">
-             <p>
-               Notice: This is a Clinical Productivity Tool. <span className="font-bold text-white uppercase tracking-wide">DO NOT ENTER PROTECTED HEALTH INFORMATION.</span> ChartFlow is not an Electronic Medical Record (EMR) system. 
-             </p>
-             <p>
-               All users are strictly bound by their professional clinical license, institutional policies, and <span className="text-teal-400 font-bold">HIPAA (Health Insurance Portability and Accountability Act)</span> federal guidelines. Users are solely responsible for verifying the accuracy of all generated documentation before final signature or EHR entry.
-             </p>
-             <div className="flex justify-center pt-2">
-               <span className="text-[10px] font-black text-white bg-slate-800/80 px-5 py-2 rounded-full uppercase tracking-[0.3em]">Designed for the Healthcare Frontline</span>
-             </div>
+      {/* Compact Footer */}
+      <footer className="max-w-5xl mx-auto px-6 mt-8 no-print">
+        <div className="bg-black rounded-3xl p-5 text-white shadow-xl border border-slate-800">
+           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="medical-gradient p-1.5 rounded-lg">
+                  <Icons.ChartLogo />
+                </div>
+                <div className="text-left">
+                  <h4 className="text-sm font-black tracking-tight text-white leading-none">ChartFlow Pro</h4>
+                  <p className="text-teal-400 font-bold uppercase tracking-[0.2em] text-[7px] mt-1">Clinical Integrity</p>
+                </div>
+              </div>
+              
+              <div className="text-[11px] text-slate-400 font-medium leading-tight max-w-xl text-center md:text-right border-t md:border-t-0 md:border-l border-slate-800 pt-3 md:pt-0 md:pl-6">
+                <p className="mb-1">
+                  <span className="font-black text-white uppercase text-[9px]">Disclaimer:</span> Not an EMR. <span className="font-bold text-white">DO NOT ENTER PHI.</span>
+                </p>
+                <p>
+                  Bound by license, policy, and <span className="text-teal-400 font-bold">HIPAA</span>. User assumes all responsibility for clinical accuracy.
+                </p>
+              </div>
            </div>
         </div>
       </footer>
