@@ -20,13 +20,14 @@ const App: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleScanNotes = async () => {
+    // If running in a native Capacitor shell (Android/iOS app)
     if (Capacitor.isNativePlatform()) {
       try {
         const image = await Camera.getPhoto({
           quality: 90,
           allowEditing: false,
           resultType: CameraResultType.DataUrl,
-          source: CameraSource.Camera
+          source: CameraSource.Camera // Forces the camera on native
         });
 
         if (image.dataUrl) {
@@ -38,6 +39,8 @@ const App: React.FC = () => {
         console.error('Native Camera Error:', error);
       }
     } else {
+      // Fallback for Mobile/Desktop Web: Trigger the hidden file input
+      // On Android/iOS browsers, 'capture="environment"' triggers the camera
       fileInputRef.current?.click();
     }
   };
@@ -109,6 +112,16 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen text-black pb-10">
+      {/* Hidden input moved outside to prevent event bubbling and ensure Android browser compatibility */}
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        className="hidden" 
+        accept="image/*" 
+        capture="environment" 
+        onChange={handleFileChange} 
+      />
+
       <header className="glass border-b border-slate-200 sticky top-0 z-50 no-print">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -145,7 +158,7 @@ const App: React.FC = () => {
           </p>
         </div>
 
-        {/* Verification Protocol Banner - Symbol beside text */}
+        {/* Verification Protocol Banner */}
         <div className="mb-10 no-print flex justify-center">
           <div className="bg-white border-2 border-slate-200 py-2.5 px-5 rounded-xl flex items-center gap-3.5 shadow-md max-w-2xl w-full">
             <div className="shrink-0 text-emerald-600 flex items-center">
@@ -198,7 +211,6 @@ const App: React.FC = () => {
                 >
                   <Icons.Camera />
                   <span>Scan</span>
-                  <input type="file" ref={fileInputRef} className="hidden" accept="image/*" capture="environment" onChange={handleFileChange} />
                 </button>
               </div>
               
